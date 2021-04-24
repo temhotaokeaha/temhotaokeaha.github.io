@@ -1,1 +1,1 @@
-# Repository for [temhotaokeaha.github.io](temhotaokeaha.github.io)
+# Repository for my website

@@ -11,6 +11,10 @@ body {
 	color: #edf1f9;
 }
 
+footer {
+	text-align: center;
+}
+
 div.general {
 	background-image: linear-gradient(to bottom, #21252F, #1d212a);
     background-color: #21252F;

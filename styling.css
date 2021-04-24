@@ -19,7 +19,7 @@ div.general {
 	background-image: linear-gradient(to bottom, #21252F, #1d212a);
     background-color: #21252F;
     border-radius: 15px;
-	padding: 2%;
+	padding: 1% 2% 1% 2%;
 }
 
 img {

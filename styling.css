@@ -1,6 +1,6 @@
 html { 
     font-family: Tahoma, verdana, sans-serif;
-	font-size: 1.3em;
+	
 	min-height: 100%;
 	color: #EDF1F9;
 	background-image: linear-gradient(to bottom, #171A21, #000000);
@@ -20,15 +20,15 @@ footer {
 	background-image: linear-gradient(to bottom, #21252F, #1D212A);
     background-color: #21252F;
     border-radius: 15px;
-	padding: 2% 10% 2% 10%;
+	padding: 1em 2em 1em 2em;
 }
 
 ul { 
 	background-color: #171A21;
-	padding: 2% 5% 5% 5%;
-	border-radius: 10px;
+	padding: 1% 5% 1% 5%;
+	border-radius: 0.5em;
 	border-style: solid;
-	border-width: 10px;
+	border-width: 0.5em;
 	border-color: #E4E8F1;
 }
 
@@ -68,9 +68,15 @@ div.gallery_pixelated img.Flanga {
 	height: 512px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 800px) {
+	
+	html {
+		font-size: 1.0em;
+	}
+	
+	
     div.container {
-		margin: 2% 5% 2% 5%; 
+		margin: 1em 1em 1em 1em; 
 	}
 	div.gallery_non_pixelated {
 		margin: 10% 10% 10% 10%;
@@ -87,16 +93,18 @@ div.gallery_pixelated img.Flanga {
 		flex-wrap: wrap;
 		align-content: center;
 		justify-content: center;
-		margin: 0% 5% 0% 5%;
+		margin: 0% 1% 0% 1%;
 	}
 }
 
-@media screen and (min-width: 1000px) {
-	div.container {
-		margin: 2% 20% 2% 20%;
+@media screen and (min-width: 800px) {
+	
+	html {
+		font-size: 1.3em;
 	}
-	div.gallery_non_pixelated {
-
+	
+	div.container {
+		margin: 2em 15% 2em 15%;
 	}
 	
 	div.gallery_non_pixelated img { 
@@ -109,22 +117,23 @@ div.gallery_pixelated img.Flanga {
 	}
 	
 	div.gallery_pixelated {}	
+	div.gallery_non_pixelated {}
 }
 
 h1 {
-	font-size: 250%;
+	font-size: 2.5em;
 	color: #FFFFFF;
 	text-align: center;
 }
 
 h2 {
-	font-size: 200%;
+	font-size: 2em;
 	color: #E4E8F1;
 	text-align: center;
 }
 
 h3 {
-	font-size: 125%;
+	font-size: 1.3em%;
 	color: #BCC0C9;
 	padding: 0.2em;
 }
@@ -132,7 +141,7 @@ h3 {
 .link_big {
 	padding: 2px 0px 2px 0px;
 	font-weight: bold;
-	font-size: 125%;
+	font-size: 1.3em;
 	color: #9FA9CD;
 }
 

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<title>RFOE Game Design Document</title>
+	<link rel="stylesheet" href="styling.css">
+	<link rel="icon" type="image/ico" href="assets/icon.ico"/>
+	<! –– Embedded CSS to try to keep everything in a single file –>
+	<style>
+
+	/* == COLORS ======================= */
+
+	html {
+		color: #0F0F0F;
+		background-color: #F0F0F0;
+	}
+
+	html a  {
+		color: #0F0F0F;
+	}
+
+	html a:visited {
+		color: #0F0F0F;
+	}
+
+	.dark-mode {
+		color: #F0F0F0;
+  	background-color: #0F0F0F;
+  }
+
+	.dark-mode a:visited {
+		color: #F0F0F0;
+	}
+
+	.dark-mode a {
+		color: #F0F0F0;
+	}
+
+	/* == COLORS ======================= */
+
+	div {
+		margin: 0 auto;
+		width: calc(57.5em - 50px);
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	li a {
+		font-size: 1.25em;
+	}
+
+	h1 {
+		text-align: center;
+		font-size: 5em;
+	}
+
+	h2 {
+		text-align: center;
+		font-size: 3em;
+		font-weight: normal;
+	}
+
+	h3 {
+		font-weight: normal;
+		text-align: center;
+		font-size: 1.75em;
+		margin: 0.1em 0em 0.1em 0em;
+	}
+
+	a h3 {
+		font-size: 1.25em;
+		margin: 0.1em 0em 0.1em 0em;
+	}
+
+	p {
+		font-size: 1.4em;
+		margin: 0.6em 0em 0.6em 0em;
+		padding: 0.5em;
+	}
+
+	footer {
+		text-align: center;
+	}
+
+	ul {
+		margin: 0 auto;
+		width: calc(50em - 50px);
+		padding: 1em 4em 1em 4em;
+		border-radius: 1.5em;
+		border-style: solid;
+		border-width: 0.2em;
+		list-style-type: none;
+	}
+
+	button {
+		position: sticky;
+		top: 1em;
+		margin: 0 auto;
+		padding: 1em 1em 1em 1em;
+		border-radius: 0.5em;
+		border-style: none;
+	}
+
+	li {
+		padding: 0.05em 0em 0.05em 0em;
+	}
+
+	.centered {
+		text-align: center;
+	}
+
+	.title {
+		text-align: center;
+		padding: 2em 0em 2em 0em;
+	}
+
+	.unselectable {
+		user-select: none;
+		text-align: center;
+	}
+
+	</style>
+
+</head>
+
+<body>
+
+	<button onclick="toggleTheme()">🌓</button>
+
+	<div class="title">
+				<h2>[Work in Progress]</h2>
+        <h1>Russian Field of Experiments</h1>
+        <h2>Game Design Document</h2>
+				<br>
+        <p><b>3D Survival Sandbox</b> with <b>2D Visual Novel</b> elements<br>
+				<br>
+        Version 2 (2022.02.09)</p>
+	</div>
+
+		<ul>
+			<li><h2>Index</h2></li>
+			<li><a href="#introduction"><h3>Introduction</h3></a></li>
+			<li><a href="#lead">• Lead</a></li>
+			<li><a href="#title">• Title</a></li>
+			<li><a href="#description">• Description (w/ references)</a></li>
+			<li><a href="#references">• Reference Games</a></li>
+			<li><a href="#minecraft">— Minecraft</a></li>
+			<li><a href="#terraria">— Terraria</a></li>
+			<li><a href="#stalker">— Stalker</a></li>
+			<li><a href="#principles">• Principles</a></li>
+			<br>
+			<li class="unselectable">———</li>
+			<br>
+			<li><a href="#implementation"><h3>Implementation</h3></a></li>
+			<li><a href="#game_engines">• Game Engines</a></li>
+			<li><a href="#development_cycle">• Development cycle</a></li>
+			<li><a href="#testing_environment">• Testing environment</a></li>
+			<li><a href="#official_server">• Official Server</a></li>
+			<br>
+			<li class="unselectable">———</li>
+			<br>
+			<li><a href="#setting"><h3>Setting</h3></a></li>
+			<li><a href="#design">• Design</a></li>
+			<li><a href="#aesthetics_and_atmosphere">— Aesthetics and Atmosphere</a></li>
+			<li><a href="#culture">— Culture</a></li>
+			<li><a href="#quirks_of_universe">— Quirks of Universe</a></li>
+			<li><a href="#regular_world">• Regular world</a></li>
+			<li><a href="#fewer_world">• Fewer world</a></li>
+			<br>
+			<li class="unselectable">———</li>
+			<br>
+			<li><a href="#characters"><h3>Characters</h3></a></li>
+			<li><a href="#protagonist">• Protagonist</a></li>
+			<li><a href="#ksenia">• Ksenia</a></li>
+			<li><a href="#sonya">• Sonya</a></li>
+			<li><a href="#other_characters">• Other Characters</a></li>
+			<br>
+			<li class="unselectable">———</li>
+			<br>
+			<li><a href="#"><h3>Story</h3></a></li>
+			<li><a href="#volume_1">• Volume 1</a></li>
+			<li><a href="#volume_2">• Volume 2</a></li>
+			<li><a href="#volume_3">• Volume 3</a></li>
+			<li><a href="#volume_4">• Volume 4</a></li>
+			<li><a href="#volume_5">• Volume 5</a></li>
+			<li><a href="#volume_6">• Volume 6</a></li>
+			<li><a href="#volume_7">• Volume 7</a></li>
+			<li><a href="#volume_8">• Volume 8</a></li>
+			<br>
+			<li class="unselectable">———</li>
+			<br>
+			<li><a href="#"><h3>Game Modes</h3></a></li>
+			<li><a href="#single_player_campaign">• Single Player Campaign</a></li>
+			<li><a href="#survival_single_player">• Survival Single Player</a></li>
+			<li><a href="#survival_multiplayer">• Survival Multiplayer</a></li>
+			<li><a href="#">— Teams</a></li>
+			<li><a href="#">— Oracle (mini-game)</a></li>
+			<br>
+			<li class="unselectable">———</li>
+			<br>
+			<li><a href="#story_mode"><h3>Story Mode</h3></a></li>
+			<li><a href="#story_mode_interface">• Interface</a></li>
+			<li><a href="#story_mode_data_formatting">• Data formatting</a></li>
+			<li><a href="#story_mode_variables">• Variables</a></li>
+			<li><a href="#story_mode_saves">• Save formatting</a></li>
+			<br>
+			<li class="unselectable">———</li>
+			<br>
+			<li><a href="#sandbox_mode"><h3>Sandbox Mode</h3></a></li>
+			<li><a href="#">• ...</a></li>
+			<br>
+			<li class="unselectable">———</li>
+			<br>
+			<li><a href="#creatures"><h3>Creatures</h3></a></li>
+			<li><a href="#friendly_creatures">• Friendly</a></li>
+			<li><a href="#hostile_creatures">• Hostile</a></li>
+			<li><a href="#bosses">• Bosses</a></li>
+			<br>
+			<li class="unselectable">———</li>
+			<br>
+			<li><a href="#player"><h3>Player</h3></a></li>
+			<li><a href="#body">• Body</a></li>
+			<li><a href="#health">— Health</a></li>
+			<li><a href="#hunger">— Hunger</a></li>
+			<li><a href="#energy">— Energy</a></li>
+			<li><a href="#effects">• Effects</a></li>
+			<li><a href="#gear">• Gear</a></li>
+			<li><a href="#aura">• Aura</a></li>
+			<br>
+			<li class="unselectable">———</li>
+			<br>
+			<li><a href="#world"><h3>World</h3></a></li>
+			<li><a href="#biomes">• Biomes</a></li>
+			<li><a href="#natural_structures">• Natural Structures</a></li>
+			<li><a href="#manmade_structures">• Manmade Structures</a></li>
+			<li><a href="#events">• Events</a></li>
+			<li><a href="#weather">• Weather</a></li>
+			<br>
+			<li class="unselectable">———</li>
+			<br>
+			<li><a href="#elements"><h3>Elements</h3></a></li>
+			<li><a href="#materials">• Materials</a></li>
+			<li><a href="#blocks">• Blocks</a></li>
+			<li><a href="#plants">— Plants</a></li>
+			<li><a href="#machines">— Machines</a></li>
+			<li><a href="#items">• Items</a></li>
+			<li><a href="#tools">— Tools</a></li>
+			<li><a href="#devices">— Devices</a></li>
+			<li><a href="#guns">— Guns</a></li>
+			<li><a href="#artifacts">— Artifacts</a></li>
+			<li><a href="#recipes">• Recipes</a></li>
+
+		</ul>
+
+<div>
+	<h2 id="introduction">Introduction</h2>
+	<h3 id="lead">Lead</h3>
+	<p>&emsp;RFOE is a survival sandbox game with optional story mode, aiming to be rich, original and engaging aesthetically and in gameplay. The game will feature "Survival Single Player", "Survival Multi Player", and "Single Player Campaign", where first 2 are comparable to SSP/SMP in Minecraft, while Campaign mode features Story Mode sandwiching portions of Sandbox Mode.</p>
+	<br>
+	<h3 id="title">Title</h3>
+	<p>The title of the game is "Russian Field Of Experiments" (RFOE), or "Русское Поле Экспериментов" (РПЭ) in Russian. The name is a reference to <a href="https://en.wikipedia.org/wiki/Russkoe_pole_eksperimentov"><u>Russian punk album</u></a>. </p>
+	<br>
+	<h3 id="description">Description (w/ references)</h3>
+	<h3 id="">Reference Games</h3>
+	<h3 id="principles">Principles</h3>
+	<br>
+	<p class="unselectable">———</p>
+	<br>
+	<h2 id="implementation">Implementation</h2>
+	<h3 id="game_engines">Game Engines</h3>
+	<h3 id="development_cycle">Development cycle</h3>
+	<h3 id="testing_environment">Testing environment</h3>
+	<h3 id="official_server">Official Server</h3>
+	<br>
+	<p class="unselectable">———</p>
+	<br>
+	<h2 id="setting">Setting</h2>
+	<h3 id="design">Design</h3>
+	<p id="aesthetics_and_atmosphere">Aesthetics and Atmosphere</p>
+	<p id="culture">Culture</p>
+	<p id="quirks_of_universe">Quirks of Universe</p>
+	<h3 id="regular_world">Regular world</h3>
+	<h3 id="fewer_world">Fewer world</h3>
+	<br>
+	<p class="unselectable">———</p>
+	<br>
+	<h2 id="characters">Characters</h2>
+	<h3 id="protagonist">Protagonist</h3>
+	<h3 id="ksenia">Ksenia</h3>
+	<h3 id="sonya">Sonya</h3>
+	<h3 id="other_characters">Other Characters</h3>
+	<br>
+	<p class="unselectable">———</p>
+	<br>
+	<h2 id="">Story</h2>
+	<h3 id="volume_2">Volume 2</h3>
+	<h3 id="volume_3">Volume 3</h3>
+	<h3 id="volume_3">Volume 3</h3>
+	<h3 id="volume_4">Volume 4</h3>
+	<h3 id="volume_5">Volume 5</h3>
+	<h3 id="volume_6">Volume 6</h3>
+	<h3 id="volume_7">Volume 7</h3>
+	<h3 id="volume_8">Volume 8</h3>
+	<br>
+	<p class="unselectable">———</p>
+	<br>
+	<h2 id="">Game Modes</h2>
+	<h3 id="single_player_campaign">Single Player Campaign</h3>
+	<h3 id="survival_single_player">Survival Single Player</h3>
+	<h3 id="survival_multiplayer">Survival Multiplayer</h3>
+	<p id="">Teams</p>
+	<p id="">Oracle (mini-game)</p>
+	<br>
+	<p class="unselectable">———</p>
+	<br>
+	<h2 id="story_mode">Story Mode</h2>
+	<h3 id="story_mode_interface">Interface</h3>
+	<h3 id="story_mode_data_formatting">Data formatting</h3>
+	<h3 id="story_mode_variables">Variables</h3>
+	<h3 id="story_mode_saves">Save formatting</h3>
+	<br>
+	<p class="unselectable">———</p>
+	<br>
+	<h2 id="sandbox_mode">Sandbox Mode</h2>
+	<h3 id="">...</h3>
+	<br>
+	<p class="unselectable">———</p>
+	<br>
+	<h2 id="creatures">Creatures</h2>
+	<h3 id="friendly_creatures">Friendly</h3>
+	<h3 id="hostile_creatures">Hostile</h3>
+	<h3 id="bosses">Bosses</h3>
+	<br>
+	<p class="unselectable">———</p>
+	<br>
+	<h2 id="player">Player</h2>
+	<h3 id="body">Body</h3>
+	<p id="health">Health</p>
+	<p id="hunger">Hunger</p>
+	<p id="energy">Energy</p>
+	<h3 id="effects">Effects</h3>
+	<h3 id="gear">Gear</h3>
+	<h3 id="aura">Aura</h3>
+	<br>
+	<p class="unselectable">———</p>
+	<br>
+	<h2 id="world">World</h2>
+	<h3 id="biomes">Biomes</h3>
+	<h3 id="natural_structures">Natural Structures</h3>
+	<h3 id="manmade_structures">Manmade Structures</h3>
+	<h3 id="events">Events</h3>
+	<h3 id="weather">Weather</h3>
+	<br>
+	<p class="unselectable">———</p>
+	<br>
+	<h3 id="elements">Elements</h3>
+	<h3 id="materials">Materials</h3>
+	<h3 id="blocks">Blocks</h3>
+	<p id="plants">Plants</p>
+	<p id="machines">Machines</p>
+	<h3 id="items">Items</h3>
+	<p id="tools">Tools</p>
+	<p id="devices">Devices</p>
+	<p id="guns">Guns</p>
+	<p id="artifacts">Artifacts</p>
+	<h3 id="recipes">Recipes</h3>
+</div>
+
+</body>
+
+<footer>
+	<h4>
+	<a href="https://github.com/temhotaokeaha/temhotaokeaha.github.io" title="GDD on GitHub">Source</a>
+</h4>
+</footer>
+
+<script>
+function toggleTheme() {
+   var element = document.body;
+   element.classList.toggle("dark-mode");
+}
+</script>
+
+</html>
